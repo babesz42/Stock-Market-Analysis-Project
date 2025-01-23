@@ -1,0 +1,81 @@
+Note: This guide for the indicators is created by me, I am not an expert in finance, if you find any mistakes in it please contact me. The purpose of this is the help people easily understand what the provided indicators try to do. other source: Investopedia
+
+I. Momentum Oscillators:
+	Momentum indicators are technical analysis tools used to determine the strength or weakness of a stock's price trend. Momentum measures the rate of the rise or fall of stock prices.
+
+	1. Moving Average Convergence/Divergence (MACD):
+	This indicator is used for determining momentum and trends. Traders use the MACD to identify entry and exit points for trades 
+	
+	Applications:
+
+		- A crossover occurs when the signal line and MACD line cross each other. The MACD generates a bullish signal when it moves above the signal line and triggers a sell signal (bearish) when it moves below the signal line
+		- When the MACD crosses from below to above the zero line, it is considered a bullish signal. Traders generally take long positions when this occurs. If it crosses from above to below the zero line, it is considered a bearish signal by traders. Traders then enter short positions to take advantage of falling prices and increasing downward momentum.
+
+	Drawbacks:
+
+		- It can generate false signals
+		- The MACD zero-cross is a lagging indicator because the price is generally above the previous low before the MACD crosses the line from below. This can cause you to enter a long position later than you might have been able to.
+
+
+	2. Relative Strength Index (RSI):
+	This indicator is also used to determine momentum and to decide wether the stock is overbought or undervalued
+
+	Applications:
+
+		- If the RSI value is above 70, the stock is considered overbought, if it is under 30 it is undervalued. A more conservative approach is used also with values 80-20
+		- From this we should be able to predict how will the price react.
+
+	Drawback:
+
+		- Since the indicator displays momentum, it can stay overbought or oversold for a long time when an asset has significant momentum in either direction. Therefore, the RSI is most useful in an oscillating market (a trading range) where the asset price is alternating between bullish and bearish movements.
+
+
+II. Volatility Indicators
+	Traders and analysts rely on a variety of different indicators to track volatility and to determine optimal exit or entry points for trades. While high volatility is often a deterrent for a risky trade, increased fear during extreme market moves can also create buying opportunities and provide an exceptional trading ground for experienced investors.
+
+	1. Average True Range (ATR):
+	ATR shows investors the average range prices swing for an investment over a specified period.
+
+	Applications:
+
+		- For the ATR, we need to find a multiplier value (the traders choice, typically around 2). We have to subtract it from the entry price and that should be our stop-loss (we need to sell) if don't want to lose a lot more.
+		- ATR is used to gauge market volatility, helping traders understand the stability or variability of an asset's price movements. Higher ATR values suggest greater volatility, while lower values indicate stability.
+
+	Drawbacks:
+
+		- The indicator does not indicate the price direction
+		- ATR is calculated using past price data, which means it reflects historical volatility and may not always predict future market conditions accurately.
+
+
+	2. Bollinger Bands (BBs):
+	Bollinger Bands are a technical analysis tool that consists of a central moving average line with two standard deviation lines (bands) above and below it, used to measure market volatility and identify overbought or oversold conditions.
+
+	Applications:
+
+		- Prices near the upper band may indicate an overbought market, while prices near the lower band may suggest an oversold market.
+		- The width of the bands expands and contracts based on market volatility. Wider bands indicate higher volatility, while narrower bands suggest lower volatility.
+		- When prices move outside the bands, it may signal a potential reversal. A close above the upper band followed by a move back inside the band can indicate a bearish reversal, and vice versa for a bullish reversal.
+
+	Drawbacks:
+
+		- Bollinger Bands measure volatility and provide information about potential price extremes, but they do not predict the direction of price movements. Prices can continue to rise in an overbought condition or fall in an oversold condition.
+		- In ranging or sideways markets, Bollinger Bands can produce false signals, leading traders to make incorrect predictions about market direction. Prices may frequently touch or cross the bands without leading to significant movements.
+
+
+III. Volume Indicator
+	Trading volume is a measure of how much a given financial asset has traded in a period. Volume for stocks is measured by the number of shares traded. Volume for futures and options is based on how many contracts have changed hands. Investors and day traders look to volume to determine liquidity and they combine changes in volume with technical indicators to make trading decisions.
+
+	1. Volume-Weighted Average Price (VWAP):
+	The VWAP is a measure used in technical analysis of the stock's volume-weighted average price over a trading period.
+
+	Applications:
+
+		- Daytraders use it as a trading benchmark when buying a stock. If the current price is lower then the VWAP, it is considered a 'good' price to buy and vice versa.
+		- This means that when the price is below the VWAP, the buying pressure tends to rise which creates higher prices (and vice versa)
+
+	Drawbacks:
+
+		- VWAP's accuracy and reliability heavily depend on the volume data. In low-volume periods, it might not accurately reflect true market conditions.
+		- For stocks with irregular trading volumes or those that are more volitile, the VWAP might be less effective and can give misleading signals.
+
+
