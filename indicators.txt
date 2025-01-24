@@ -91,38 +91,36 @@ This rather simple algorithm's aim is to look through all the indicators, that a
 
 
     bullish = +1,   bearish = -1
-    MACD: when the histogram changes sign
+Indicator gives signal when...
+    MACD: the histogram changes sign
     MACD_signal = []
     if MACDh[i] > 0 and MACDh[i-1] < 0 --> bullish
     elif MACDh[i] < 0 and MACDh[i-1] > 0 --> bearish
     elif return 0
 
-    RSI:
+    RSI: the RSI goes under 30 or above 70
     if RSI[i] < 30 --> bullish
     if RSI[i] > 70 --> bearish
     if RSI[i] between 30 and 70 return 0
 
-    BBs:
+    BBs: the close is not in between the bands
     if Close[i] < BBL[i] --> bullish
     elif Close[i] > BBU[i] --> bearish
     elif return 0
 
-    VWAP:
+    VWAP: when the VWAP is higher or lower than the close
     if VWAP[i] < Close[i] --> bullish
     if VWAP[i] > Close[i] --> bearish
 
-    All the indicators are straight forward, my idea is to use the ATR as a multiplier, so if the stock looks more volatile than the multiplier would tend to go to 0, putting the total grade
-    closer to 0 (hold) to not take part in volatile/risky transactions.
+    All the indicators are straight forward, but the model uses the ATR as a multiplier, so if the stock looks more volatile than the multiplier would tend to go to 0, putting the final grade closer to 0 (hold) to not take part in volatile/risky transactions.
 
-    ATR: this model tends to lean toward less volatile trades, so we are going to use the ATR as a multiplier to our calculated value / grade
+    ATR:
     Note: ATR's interpretation is relative to the historical ATR prices (e.g. if in the last year the atr on average was 2.5 and suddenly it becomes 6, this means really high volatility)
-    First create a moving average for the ATR, which takes into consideration:
+    First create a moving average for the ATR, which takes into consideration the previous 52 data points (in weekly case the previous year):
     ATR values from ATR[i-53] to ATR[i-1] and take their average
     ATR_comparison_base[i] = (ATR[i-53]+ATR[i-52]+..+ATR[i-1])/52
     ATR_grade[i] = ATR[i] / ATR_comparison_base[i]
     Then we take this ATR grade (which can be higher or lower than 1) and we multiply the score from the other indicators by this value to
-    Reason: if the volatility is really low (our grade is closer to 0) this means we rather hold, and this helps bring our total closer to 0
-    
-if ATR high --> multiplier < 1
-if ATR low --> multiplier > 1
+
+The final step is to multiply the grade given from the 4 indicators by the ATR_grade and round it to the closest integer to get a final grade from -5 to 5.
 
