@@ -78,4 +78,51 @@ III. Volume Indicator
 		- VWAP's accuracy and reliability heavily depend on the volume data. In low-volume periods, it might not accurately reflect true market conditions.
 		- For stocks with irregular trading volumes or those that are more volitile, the VWAP might be less effective and can give misleading signals.
 
+The trading algorithm:
+The aim of this model is to find open long or short positions, and try to minimize risk and maximize profit in the long term.
+
+This rather simple algorithm's aim is to look through all the indicators, that are part of the strategy and add an extra column that corresponds to each of them. The columns' purpose: look at what the indicator signals (bullish or bearish),
+    if bullish, then that would translate to +1 in the "indicator_signal" column, if bearish than -1, if nothing than 0. Next, I sum these values (exccept the ATR) and decide a grading:
+    5 and 4 are considered strong buy, 2 and 3 are buy, 1, 0 and -1 are hold, -2 and -3 are sell, -4 and -5 are strong sell.
+    With this method, I create this "grade" column, and I check for the last 5 datapoints, take their average and that is going to be our final value and final indication.
+
+    Full table before the calculations: ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume', 'MACD_12_26_9', 'MACDh_12_26_9', 'MACDs_12_26_9', 'RSI_14', 'ATRr_14',
+                    'BBL_14_2.0', 'BBM_14_2.0', 'BBU_14_2.0', 'BBB_14_2.0', 'BBP_14_2.0', 'VWAP_W']
+
+
+    bullish = +1,   bearish = -1
+    MACD: when the histogram changes sign
+    MACD_signal = []
+    if MACDh[i] > 0 and MACDh[i-1] < 0 --> bullish
+    elif MACDh[i] < 0 and MACDh[i-1] > 0 --> bearish
+    elif return 0
+
+    RSI:
+    if RSI[i] < 30 --> bullish
+    if RSI[i] > 70 --> bearish
+    if RSI[i] between 30 and 70 return 0
+
+    BBs:
+    if Close[i] < BBL[i] --> bullish
+    elif Close[i] > BBU[i] --> bearish
+    elif return 0
+
+    VWAP:
+    if VWAP[i] < Close[i] --> bullish
+    if VWAP[i] > Close[i] --> bearish
+
+    All the indicators are straight forward, my idea is to use the ATR as a multiplier, so if the stock looks more volatile than the multiplier would tend to go to 0, putting the total grade
+    closer to 0 (hold) to not take part in volatile/risky transactions.
+
+    ATR: this model tends to lean toward less volatile trades, so we are going to use the ATR as a multiplier to our calculated value / grade
+    Note: ATR's interpretation is relative to the historical ATR prices (e.g. if in the last year the atr on average was 2.5 and suddenly it becomes 6, this means really high volatility)
+    First create a moving average for the ATR, which takes into consideration:
+    ATR values from ATR[i-53] to ATR[i-1] and take their average
+    ATR_comparison_base[i] = (ATR[i-53]+ATR[i-52]+..+ATR[i-1])/52
+    ATR_grade[i] = ATR[i] / ATR_comparison_base[i]
+    Then we take this ATR grade (which can be higher or lower than 1) and we multiply the score from the other indicators by this value to
+    Reason: if the volatility is really low (our grade is closer to 0) this means we rather hold, and this helps bring our total closer to 0
+    
+if ATR high --> multiplier < 1
+if ATR low --> multiplier > 1
 
